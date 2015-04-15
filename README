@@ -1,0 +1,21 @@
+V 0.0.1
+Spanish:
+He modificado ligeramente la especificación a partir de la cual he desarrollado mi código.
+http://en.wikipedia.org/wiki/Doubly_linked_list
+Éste se corresponde con el de la lista doblemente enlazada abierta, añadiendo otra variable
+privada para el tamaño de la lista.
+Normalmente, la utilización de listas se basa en la introducción y extracción de un dato/objeto,
+por lo que la necesidad de crear un nodo con nuestro dato/objeto (a partir de ahora 'valor genérico')
+para utilizar la lista lo veo poco acertado. En su lugar voy a crear de forma interna el nodo con el
+valor que nos van a pasar como parámetro, de manera que el proceso sea transparente.
+Además, elimino la sobrecarga de tener que pasar la propia lista como argumento para cualquier función.
+
+English:
+I've slightly modified the specification I've used to build this code.
+http://en.wikipedia.org/wiki/Doubly_linked_list
+This is Open doubly-linked lists code, adding another private variable for list size.
+Usually, the use of Open doubly-linked lists code is basing on introduction and extraction of a
+data/object, so the requirement of get a node with the date/object (since now I'll call it 'generic
+valor') to use the list it's not such a good idea. Instead the code build an internal node using that
+generic valor.
+Also, I  delete the overcharge of pass the list as argument for each function.
