@@ -1,4 +1,11 @@
 V 0.0.1
+
+Branch for unit tests using JUnit technology.
+Pair programming with josedonas.
+The code is mine but the test is his.
+
+-------------------------------------------------------------------------------------------------------------------------
+
 Spanish:
 He modificado ligeramente la especificación a partir de la cual he desarrollado mi código.
 http://en.wikipedia.org/wiki/Doubly_linked_list
