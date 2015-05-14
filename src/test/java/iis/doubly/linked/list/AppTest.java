@@ -263,7 +263,7 @@ public class AppTest {
 
         }
 
-        this.lista.removeAll();
+        //this.lista.removeAll();
 
 
         assertTrue(this.lista.isEmpty());
