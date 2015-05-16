@@ -159,8 +159,9 @@ public class DoublyLinkedList<T> {
 			insertBeginning(newData);
 		} else {
 			insertAfterNode(this.lastNode, newData);
+			this.listSize++;
 		}
-		this.listSize++;
+
 
 	}
 
@@ -224,20 +225,19 @@ public class DoublyLinkedList<T> {
 		boolean flag = false;
 		if (o instanceof DoublyLinkedList<?>
 				&& this.getClass().getName().equals(o.getClass().getName())) {
-			@SuppressWarnings("unchecked")
 			DoublyLinkedList<T> objectList = (DoublyLinkedList<T>)o;
 			DoublyLinkedNode<T> thisNode = this.firstNode;
 			DoublyLinkedNode<T> nodeObject = objectList.firstNode;
 			boolean differents = false;
 			while (thisNode != null && nodeObject != null && !differents){
-				if (!thisNode.equals(nodeObject)){
+				if (!thisNode.data.equals(nodeObject.data)){
 					differents = true;
 				}else{
 					thisNode = thisNode.next;
 					nodeObject = nodeObject.next;
 				}
 			}
-			if (!differents && (thisNode != null || nodeObject != null)){
+			if (thisNode == null && nodeObject == null) {
 				flag = true;
 			}
 		}
