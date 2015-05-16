@@ -270,7 +270,6 @@ public class AppTest {
         assertTrue(0 == this.lista.listSize());
         assertTrue(this.lista.first() == null);
         assertTrue(this.lista.last() == null);
-        this.lista.firstNode;
 
     }
 
