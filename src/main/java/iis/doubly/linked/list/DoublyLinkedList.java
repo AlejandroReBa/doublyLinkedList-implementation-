@@ -1,6 +1,5 @@
 package iis.doubly.linked.list;
 
-
 public class DoublyLinkedList<T> {
 
 	private class DoublyLinkedNode<E> {
@@ -26,7 +25,7 @@ public class DoublyLinkedList<T> {
 	}
 
 	public boolean isEmpty() {
-		return this.firstNode == null;
+		return this.firstNode == null && this.lastNode == null;
 	}
 
 	public int listSize() {
@@ -36,26 +35,24 @@ public class DoublyLinkedList<T> {
 	public T first() {
 		if (this.firstNode != null) {
 			return this.firstNode.data;
-		}else{
-			System.err.println("La lista está vacía");
-			return null;
+		} else {
+			throw new DoublyLinkedListException("Error: la lista esta vacia");
 		}
 	}
 
 	public T last() {
 		if (this.lastNode != null) {
 			return this.lastNode.data;
-		}else{
-			System.err.println("La lista está vacía");
-			return null;
+		} else {
+			throw new DoublyLinkedListException("Error: la lista esta vacia");
 		}
 	}
 
 	public T elementAtPosition(int pos) {
 		if (listSize < pos) {
-			System.err.println("No existe un nodo en la posición " + pos);
-			return null;
-		}else{
+			throw new DoublyLinkedListException(
+					"Error: no existe un nodo en la posición " + pos);
+		} else {
 			int cont = 0;
 			DoublyLinkedNode<T> nodeAux = this.firstNode;
 			while (cont < pos) {
@@ -79,15 +76,16 @@ public class DoublyLinkedList<T> {
 				newNode.next = afterNode.next;
 				if (afterNode.next == null) {
 					this.lastNode = newNode;
-				}else{
+				} else {
 					afterNode.next.prev = newNode;
 				}
 				afterNode.next = newNode;
-			}else{
+			} else {
 				afterNode = afterNode.next;
 			}
 		}
-		if (find){
+
+		if (find) {
 			this.listSize++;
 		}
 	}
@@ -98,7 +96,7 @@ public class DoublyLinkedList<T> {
 		newNode.next = node.next;
 		if (node.next == null) {
 			this.lastNode = newNode;
-		}else{
+		} else {
 			node.next.prev = newNode;
 		}
 		node.next = newNode;
@@ -117,15 +115,16 @@ public class DoublyLinkedList<T> {
 				newNode.next = beforeNode;
 				if (beforeNode.prev == null) {
 					this.firstNode = newNode;
-				}else{
+
+				} else {
 					beforeNode.prev.next = newNode;
 				}
 				beforeNode.prev = newNode;
-			}else{
+			} else {
 				beforeNode = beforeNode.next;
 			}
 		}
-		if (find){
+		if (find) {
 			this.listSize++;
 		}
 	}
@@ -219,6 +218,32 @@ public class DoublyLinkedList<T> {
 		this.firstNode = null;
 		this.lastNode = null;
 		this.listSize = 0;
+	}
+
+	public boolean equals(Object o) {
+		boolean flag = false;
+		if (o instanceof DoublyLinkedList<?>
+				&& this.getClass().getName().equals(o.getClass().getName())) {
+			@SuppressWarnings("unchecked")
+			DoublyLinkedList<T> objectList = (DoublyLinkedList<T>)o;
+			DoublyLinkedNode<T> thisNode = this.firstNode;
+			DoublyLinkedNode<T> nodeObject = objectList.firstNode;
+			boolean differents = false;
+			while (thisNode != null && nodeObject != null && !differents){
+				if (!thisNode.equals(nodeObject)){
+					differents = true;
+				}else{
+					thisNode = thisNode.next;
+					nodeObject = nodeObject.next;
+				}
+			}
+			if (!differents && (thisNode != null || nodeObject != null)){
+				flag = true;
+			}
+		}
+		
+		return flag;
+
 	}
 
 	public String toString() {

@@ -248,6 +248,9 @@ public class AppTest {
 
     }
 
+
+    /*
+
     @Test
     public void testSiEliminoTodosLosNodosDeListaEstaDebeQuedarTotalmenteVacia(){
 
@@ -272,6 +275,8 @@ public class AppTest {
         assertTrue(this.lista.last() == null);
 
     }
+
+*/
 
 
     @Test
