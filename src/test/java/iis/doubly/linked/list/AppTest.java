@@ -1,5 +1,7 @@
 package iis.doubly.linked.list;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -16,7 +18,7 @@ public class AppTest {
     private static final int NUM_ELEMENTOS = 10;
     private DoublyLinkedList<Integer> lista;
 
-    @Test
+    @Before
     public void testBefore(){
 
         this.lista = new DoublyLinkedList<Integer>();
@@ -66,8 +68,6 @@ public class AppTest {
 
         assertTrue(this.lista.isEmpty());
         assertTrue(0 == this.lista.listSize());
-        assertTrue(this.lista.first() == null);
-        assertTrue(this.lista.last() == null);
 
     }
 
@@ -278,8 +278,7 @@ public class AppTest {
 
 */
 
-
-    @Test
+    @After
     public void testDespues(){
 
         this.lista = null;
