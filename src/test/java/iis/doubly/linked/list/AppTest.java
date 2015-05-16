@@ -13,7 +13,7 @@ import java.util.Random;
 import static org.junit.Assert.*;
 
 /**
- * Created by Jose on 10/05/2015.
+ * Created by Jose Antonio González Doñas on 10/05/2015.
  */
 public class AppTest {
 
