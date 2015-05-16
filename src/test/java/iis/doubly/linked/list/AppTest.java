@@ -30,7 +30,9 @@ public class AppTest {
     @Test
     public void testAlCrearLaListaDebeEstaVacia(){
 
-        assertNull(this.lista);
+        assertTrue(this.lista.listSize()  == 0);
+        assertNull(this.lista.first());
+        assertNull(this.lista.last());
 
     }
 
