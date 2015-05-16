@@ -49,7 +49,7 @@ public class DoublyLinkedList<T> {
 	}
 
 	public T elementAtPosition(int pos) {
-		if (listSize < pos) {
+		if (listSize <= pos) {
 			throw new DoublyLinkedListException(
 					"Error: no existe un nodo en la posición " + pos);
 		} else {
