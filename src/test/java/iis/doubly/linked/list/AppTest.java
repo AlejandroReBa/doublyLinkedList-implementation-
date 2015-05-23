@@ -362,7 +362,7 @@ public class AppTest {
         }
 
         e.expect(DoublyLinkedListException.class);
-        e.expectMessage("Error: no existe un nodo en la posiciÃ³n " + (NUM_ELEMENTOS + 1));
+        e.expectMessage("Error: no existe un nodo en la posición " + (NUM_ELEMENTOS + 1));
 
         this.lista.elementAtPosition(NUM_ELEMENTOS + 1);
 
