@@ -3,6 +3,7 @@ package iis.doubly.linked.list;
 public class DoublyLinkedList<T> {
 
 	private class DoublyLinkedNode<E> {
+
 		private DoublyLinkedNode<E> prev;
 		private DoublyLinkedNode<E> next;
 		private E data;
@@ -50,8 +51,7 @@ public class DoublyLinkedList<T> {
 
 	public T elementAtPosition(int pos) {
 		if (listSize <= pos) {
-			throw new DoublyLinkedListException(
-					"Error: no existe un nodo en la posición " + pos);
+			throw new DoublyLinkedListException("Error: no existe un nodo en la posición " + pos);
 		} else {
 			int cont = 0;
 			DoublyLinkedNode<T> nodeAux = this.firstNode;
@@ -91,6 +91,9 @@ public class DoublyLinkedList<T> {
 	}
 
 	private void insertAfterNode(DoublyLinkedNode<T> node, T newData) {
+        /*Comentario de Jose (tester) siempre será null, nunca entraré en else por muchas pruebas que haga.
+          Por lo tanto no puedo alcanzar la cobertura del 100% del código
+         */
 		DoublyLinkedNode<T> newNode = new DoublyLinkedNode<T>(newData);
 		newNode.prev = node;
 		newNode.next = node.next;
@@ -131,6 +134,9 @@ public class DoublyLinkedList<T> {
 
 	private void insertBeforeNode(DoublyLinkedNode<T> node, T newData) {
 		DoublyLinkedNode<T> newNode = new DoublyLinkedNode<T>(newData);
+        /*Comentario de Jose (tester) siempre será null, nunca entraré en else por muchas pruebas que haga.
+          Por lo tanto no puedo alcanzar la cobertura del 100% del código
+         */
 		newNode.prev = node.prev;
 		newNode.next = node;
 		if (node.prev == null) {
