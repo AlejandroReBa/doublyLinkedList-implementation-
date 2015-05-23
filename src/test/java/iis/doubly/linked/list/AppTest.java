@@ -28,13 +28,28 @@ public class AppTest {
     }
 
     @Test
-    public void testAlCrearLaListaDebeEstaVacia(){
+    public void testAlCrearLaListaDebeTenerLongitudCero(){
 
         assertTrue(this.lista.listSize()  == 0);
-        assertNull(this.lista.first());
-        assertNull(this.lista.last());
+
 
     }
+
+    @Test (expected = DoublyLinkedListException.class)
+    public void testAlCrearLaListaDebeDebeLanzarExcepciónAlTratarDeObtenerPrimerElemento(){
+
+        this.lista.first();
+
+
+    }
+
+    @Test (expected = DoublyLinkedListException.class)
+    public void testAlCrearLaListaDebeDebeLanzarExcepciónAlTratarDeObtenerUltimoElemento(){
+
+        this.lista.last();
+
+    }
+
 
     @Test
     public void testSiAgregoElementoAListaVaciaELPrimerElementoDebeSerElIntroducido(){
@@ -313,6 +328,9 @@ public class AppTest {
 
         }
 
+        //para completar coverage
+        this.lista.insertEnd(valorPrueba);
+
         longitudTrasInserciones = this.lista.listSize();
 
         this.lista.removeAll(valorPrueba);
@@ -329,6 +347,90 @@ public class AppTest {
 
     }
 
+/*
+    @Test
+    public void siAccedoAlNodoDeUnaPosicionConcretaObtengoElValorEsperado(){
+
+        Random generadorAletaorios = new Random();
+        Integer aleatorio;
+        Integer valorConocido = 99;
+
+        for(int contador = 0; contador < NUM_ELEMENTOS; contador++){
+
+            aleatorio = generadorAletaorios.nextInt(1000);
+
+
+            this.lista.insertEnd(aleatorio);
+
+        }
+
+        //inserto en posicion NUM_ELEMENTOS + 1 un valor conocido:
+        this.lista.insertEnd(new Integer(valorConocido));
+
+        //inserto más valores
+        for(int contador = 0; contador < NUM_ELEMENTOS; contador++){
+
+            aleatorio = generadorAletaorios.nextInt(1000);
+
+
+            this.lista.insertEnd(aleatorio);
+
+        }
+
+        assertEquals(valorConocido,this.lista.elementAtPosition(NUM_ELEMENTOS + 1));
+    }*/
+
+    @Test
+    public void siInsertoUnNodoAlFinalDeLaListaInmediatamenteDespuesDeUnoConocidoQueOcupaLaPrimeraPosicionLoPodreEncontrarEnLaPosicionesperda(){
+
+        Integer primerNodo = 99, nodoPosterior = 100, intercalado = 159;
+
+        this.lista.insertBeginning(primerNodo);
+        //para completar coverage
+        this.lista.insertAfter(primerNodo,nodoPosterior);
+        this.lista.insertAfter(primerNodo,intercalado);
+
+        assertEquals(this.lista.last(), nodoPosterior);
+
+    }
+
+    @Test
+    public void siInsertoUnNodoEnPosicionMediaDeLaListaInmediatamenteDespuesDeUnoConocidoQueOcupaLaPrimeraPosicionLoPodreEncontrarEnLaPosicionesperda(){
+
+        Integer primero = 99, segundo = 999, dataAEncontrar = 100, ultimo = 101, intercalado = 666;
+
+        this.lista.insertBeginning(primero);
+        this.lista.insertAfter(primero,segundo);
+        this.lista.insertAfter(segundo, dataAEncontrar);
+
+        this.lista.insertAfter(dataAEncontrar,ultimo);
+
+        //para completar coverage
+        this.lista.insertAfter(dataAEncontrar,intercalado);
+
+
+        assertEquals(this.lista.elementAtPosition(3), dataAEncontrar);
+
+    }
+
+    @Test
+    public void siInsertoUnNodoEnPosicionMediaDeLaListaInmediatamenteAntesDeUnoConocidoQueOcupaLaPrimeraPosicionLoPodreEncontrarEnLaPosicionesperda(){
+
+        Integer primero = 99, segundo = 999, dataAEncontrar = 100, ultimo = 101, intercalado = 666;
+
+        this.lista.insertBeginning(primero);
+        this.lista.insertBefore(primero, segundo);
+        this.lista.insertBefore(segundo, dataAEncontrar);
+
+        this.lista.insertBefore(dataAEncontrar, ultimo);
+
+        //para completar coverage
+        this.lista.insertBefore(dataAEncontrar, intercalado);
+
+
+        assertEquals(this.lista.elementAtPosition(3), dataAEncontrar);
+
+    }
 
     @Test
     public void siIntentoAccederAlUltimoElementoDeUnaListaVaciaDebeElevarseExcepcion(){
@@ -346,7 +448,7 @@ public class AppTest {
 
     @Rule
     public ExpectedException e = ExpectedException.none();
-    @Test (expected = DoublyLinkedListException.class)
+    @Test
     public void siIntentoAccederAlElementoEnPosicionMayorQueLongitudListaDebeElevarseExcepcion(){
 
         Random generadorAletaorios = new Random();
@@ -361,10 +463,52 @@ public class AppTest {
 
         }
 
+
+
         e.expect(DoublyLinkedListException.class);
         e.expectMessage("Error: no existe un nodo en la posici�n " + (NUM_ELEMENTOS + 1));
 
         this.lista.elementAtPosition(NUM_ELEMENTOS + 1);
+    }
+
+    @Test
+    public void alDestruirListaEstaQuedaConLongitudCero(){
+
+        Random generadorAletaorios = new Random();
+        Integer aleatorio;
+
+        for(int contador = 0; contador < NUM_ELEMENTOS; contador++){
+
+            aleatorio = generadorAletaorios.nextInt(1000);
+
+
+            this.lista.insertEnd(aleatorio);
+
+        }
+
+        this.lista.destroyList();
+
+        assertEquals(0,this.lista.listSize());
+
+
+    }
+
+    @Test
+    public void alEjecutarToStringDeListaObtenemosLoEsperado(){
+
+        Integer primero = 99, segundo = 999, tercero = 100, cuarto = 101, quinto = 666;
+
+        this.lista.insertEnd(primero);
+        this.lista.insertEnd(segundo);
+        this.lista.insertEnd(tercero);
+        this.lista.insertEnd(cuarto);
+        this.lista.insertEnd(quinto);
+
+        String cadenaEsperada = "99--999--100--101--666--";
+
+        assertEquals(cadenaEsperada,this.lista.toString());
+
+
 
     }
 
