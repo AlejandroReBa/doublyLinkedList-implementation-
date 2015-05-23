@@ -51,9 +51,9 @@ public class DoublyLinkedList<T> {
 
 	public T elementAtPosition(int pos) {
 		if (listSize <= pos) {
-			throw new DoublyLinkedListException("Error: no existe un nodo en la posición " + pos);
+			throw new DoublyLinkedListException("Error: no existe un nodo en la posicion " + pos);
 		} else {
-			int cont = 0;
+			int cont = 1;
 			DoublyLinkedNode<T> nodeAux = this.firstNode;
 			while (cont < pos) {
 				cont++;
@@ -97,11 +97,7 @@ public class DoublyLinkedList<T> {
 		DoublyLinkedNode<T> newNode = new DoublyLinkedNode<T>(newData);
 		newNode.prev = node;
 		newNode.next = node.next;
-		if (node.next == null) {
-			this.lastNode = newNode;
-		} else {
-			node.next.prev = newNode;
-		}
+        this.lastNode = newNode;
 		node.next = newNode;
 
 	}
@@ -139,12 +135,8 @@ public class DoublyLinkedList<T> {
          */
 		newNode.prev = node.prev;
 		newNode.next = node;
-		if (node.prev == null) {
-			this.firstNode = newNode;
-		} else {
-			node.prev.next = newNode;
-		}
-		node.prev = newNode;
+        this.firstNode = newNode;
+        node.prev = newNode;
 	}
 
 	public void insertBeginning(T newData) {
