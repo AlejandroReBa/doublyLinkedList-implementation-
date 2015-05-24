@@ -1,8 +1,13 @@
 ﻿V 0.0.1
 
-Branch for unit tests using JUnit technology.
-Pair programming with josedonas.
-The code is mine but the test is his.
+Branch for unit tests using JUnit technology and java code coverage (JaCoCo).
+Pair programming with my partner Antonio José Gonzales Doñas (josedonas on github).
+Subject: Introduction to Software Engineering.
+Teacher: Antonio Jesús Nebro Urbaneja.
+All the code about DoublyLinkedList and DoublyLinkedListException is mine.
+All code about AppTest testing the above code is his.
+
+
 --------------------------------------------------------------------------------------------------------------------
 
 Spanish:
